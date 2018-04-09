@@ -5,6 +5,9 @@ import { getContacts } from '../../containers/App/actions';
 import { createSelector } from "reselect";
 import { makeContacts } from "../../containers/App/selectors";
 
+/** styles for component **/
+import './Contact.scss';
+
 class Contact extends Component {
 	componentWillMount() {
 		this.props.getContacts();
