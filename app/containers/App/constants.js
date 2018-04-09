@@ -8,8 +8,11 @@
  * Follow this format:
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
+/* eslint-disable */
 
 export const DEFAULT_LOCALE = 'en';
 
 export const GET_MENU       = 'GET_MENU';
 export const MENU_LOAD_ERR  = 'MENU_LOAD_ERR';
+
+export const GET_CONTACTS   = 'GET_CONTACTS';

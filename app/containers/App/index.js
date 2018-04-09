@@ -10,6 +10,7 @@
  * reloading is not a necessity for you then you can refactor it and remove
  * the linting exception.
  */
+/* eslint-disable */
 
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
@@ -19,15 +20,21 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+
 export default function App() {
 	return (
-		<div>
-			<Header />
-			<Switch>
-				<Route exact path="/" component={HomePage} />
-				<Route component={NotFoundPage} />
-			</Switch>
-			<Footer />
-		</div>
+		<MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+			<div>
+				<Header />
+				<Switch>
+					<Route exact path="/" component={HomePage} />
+					<Route component={NotFoundPage} />
+				</Switch>
+				<Footer />
+			</div>
+		</MuiThemeProvider>
 	);
 }
