@@ -3,11 +3,11 @@ export const Menu = {
     [
       {
         "title": "Home",
-        "href": "/"
+        "href": ""
       },
       {
         "title": "test",
-        "href": "/test"
+        "href": "test"
       }
     ]
 };

@@ -1,61 +1,54 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import {getMenu} from '../../containers/HomePage/actions';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { getMenu } from '../../containers/App/actions';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {createSelector} from "reselect";
-import {selectMenu} from '../../containers/HomePage/selectors';
-import {makeSelectLocale} from "../../containers/LanguageProvider/selectors";
+import { createSelector } from 'reselect';
+import { makeSelectMenu } from '../../containers/App/selectors';
 
 class Navigation extends Component {
 	constructor(props) {
 		super(props);
 		
 		this.state = {
-			mainMenu: [],
+			mainMenu: []
 		};
 	}
 	componentWillMount() {
 		this.props.getMenu();
-		//console.log(this.state);
 	}
 	render() {
-		console.log(321);
 		return(
 			<div>
 				{
-					console.log(this.props)
-				}
-				{
-					/*this.props.menu.map(
-						item => {
+					this.props.mainMenu.map(
+						(item, k) => {
 							return(
-								<Link to={item.href}>
+								<Link to={`/${item.href}`} key={k}>
 									{item.title}
 								</Link>
 							)
 						}
-					)*/
+					)
 				}
 			</div>
 		);
 	}
 }
-
-/*const mapStateToProps = createSelector(
-	selectMenu(),
-	(mainMenu) => ({ mainMenu })
-);*/
-
-const mapStateToProps = (state) => {
-	console.log(state);
-	return {
-		mainMenu: '1234'
+const mapStateToProps = createSelector(
+	makeSelectMenu(),
+	(mainMenu) => {
+		let menu = [];
+		mainMenu.forEach((item) => {menu.push(item)});
+		
+		return {
+			mainMenu: menu
+		}
 	}
-}
+);
 
 Navigation.propTypes = {
-	mainMenu: PropTypes.array.isRequired,
+	mainMenu: PropTypes.array
 };
 
 export default connect(mapStateToProps, {getMenu})(Navigation);
