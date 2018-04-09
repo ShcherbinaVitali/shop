@@ -10,16 +10,13 @@ const DEFAULT_MENU = [
 ];
 
 const initialState = fromJS({
-	mainMenu: DEFAULT_MENU,
+	menu: DEFAULT_MENU,
 });
 
 function getMenuReducer(state = initialState, action) {
-	console.log(state);
-	console.log(action.type);
-	console.log(action.payload);
 	switch (action.type) {
 		case GET_MENU:
-			return state.set('mainMenu', action.payload);
+			return state.set('menu', action.payload);
 		case MENU_LOAD_ERR:
 			return state.set('mainMenu', []);
 		default:
